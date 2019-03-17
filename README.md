@@ -70,5 +70,12 @@ o estos no serán guardados.
 Puedes enviar el campo "trace" como un array vacío. 
 
 Objetivos:
--Reemplazar mongodb por postgresql.
--Reemplazar la api por una cola de rabbit para consumir eventos.
+
+  - Reemplazar mongodb por postgresql.
+  - Reemplazar la api por una cola de rabbit para consumir eventos.
+  
+  
+Microservicio creado para GetColors, los cambios serán
+aplicados según las necesidades del equipo, el ideal es mantener
+el proyecto liviano, por lo que solo mantendrá lo básico para
+funcionar de forma eficiente.
