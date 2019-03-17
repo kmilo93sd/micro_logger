@@ -4,10 +4,11 @@ Microservicio para centralizar logs de sistemas distribuidos.
 
 API RESTful para exponer el servicio de persistencia de logs.
 
-Envía una petición POST al endpoint /logs para guardar un log:
+Envía una petición ``` POST ``` al endpoint ``` /logs ``` para guardar un log:
 
-POST to http://example.com/logs
+``` POST to http://example.com/logs ```
 
+```
 {
     "id":"UUID",
     "service":"my_service",
@@ -19,14 +20,15 @@ POST to http://example.com/logs
         //error trace
     ]
 }
+```
 
-Puedes enviar una petición GET al endpoint /logs/service-id para obtener todos
+Puedes enviar una petición ``` GET ``` al endpoint ``` /logs/service-id ``` para obtener todos
 los logs de un servicio.
 
-GET to http://example.com/logs/my_service_uuid
+``` GET to http://example.com/logs/my_service_uuid ```
 
 response:
-
+```
 "data": [
     {
         "id":"UUID",
@@ -62,7 +64,7 @@ response:
         ]
     }
 ],
-
+```
 Debes asegurarte que tus aplicaciones envíen los logs con ese formato,
 o estos no serán guardados.
 Puedes enviar el campo "trace" como un array vacío. 
