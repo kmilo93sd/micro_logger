@@ -1,16 +1,30 @@
 version: '3'
 services:
 
-  mongodb:
+  postgres:
     build:
       context: .
-      dockerfile: docker/mongodb/Dockerfile
+      dockerfile: docker/postgres/Dockerfile
     restart: always
     environment:
-      DATABASE: logger_service
-      USERNAME: admin
-      PASSWORD: 000000
+      POSTGRES_DB: ${postgres_database}
+      POSTGRES_USER: ${postgres_username}
+      POSTGRES_PASSWORD: ${postgres_password}
     ports:
-      - '5100:27017'
+      - '5432:5432'
     volumes:
-      - ./data/db:/data/db
+      - ./pgdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/jdk/Dockerfile
+    restart: always
+    environment:
+      postgres_database: ${postgres_database}
+      postgres_username: ${postgres_username}
+      postgres_password: ${postgres_password}
+    ports:
+      - '8100:8080'
+    depends_on:
+      - postgres

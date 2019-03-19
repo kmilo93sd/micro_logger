@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ShowLogsController {
 
@@ -18,7 +20,7 @@ public class ShowLogsController {
     }
 
     @GetMapping("/logs/{serviceId}")
-    public Log byServiceId(@PathVariable String serviceId){
-        return this.logRepository.findByServiceId(serviceId);
+    public List<Log> byServiceId(@PathVariable String serviceId){
+        return this.logRepository.findAllByServiceId(serviceId);
     }
 }

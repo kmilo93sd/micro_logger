@@ -13,7 +13,7 @@ Envía una petición ``` POST ``` al endpoint ``` /logs ``` para guardar un log:
     "id":"UUID",
     "service":"my_service",
     "serviceId":"UUID",
-    "ocurredOn":"2019-03-17 03:23:49",
+    "occurredOn":"2019-03-17 03:23:49",
     "error":"Something was happened",
     "errorCode":20100,
     "trace":[
@@ -34,7 +34,7 @@ response:
         "id":"UUID",
         "service":"my_service1",
         "serviceId":"UUID",
-        "ocurredOn":"2019-03-17 03:23:51",
+        "occurredOn":"2019-03-17 03:23:51",
         "error":"Something was happened",
         "errorCode":20100,
         "trace":[
@@ -45,7 +45,7 @@ response:
         "id":"UUID",
         "service":"my_service1",
         "serviceId":"UUID",
-        "ocurredOn":"2019-03-17 03:23:53",
+        "occurredOn":"2019-03-17 03:23:53",
         "error":"Something was happened",
         "errorCode":20100,
         "trace":[
@@ -56,7 +56,7 @@ response:
         "id":"UUID",
         "service":"my_service1",
         "serviceId":"UUID",
-        "ocurredOn":"2019-03-17 03:23:54",
+        "occurredOn":"2019-03-17 03:23:54",
         "error":"Something was happened",
         "errorCode":20100,
         "trace":[

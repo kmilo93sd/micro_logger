@@ -1,47 +1,61 @@
 package cl.getcolors.loggerservice.entities;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import javax.persistence.*;
 
-@Document(collection = "logs")
+@Entity
 public class Log {
 
     @Id
-    private String id;
+    @GeneratedValue( generator = "entityIdGenerator" )
+    @GenericGenerator( name = "entityIdGenerator", strategy = "uuid2" )
+    @Column( columnDefinition = "uuid", updatable = false )
+    private UUID id;
 
+    @Column(name = "service", nullable = false, updatable = false)
     private String service;
 
-    private String serviceId;
+    @Column(name = "service_id", nullable = false, updatable = false)
+    private UUID serviceId;
 
-    private String ocurredOn;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "occurred_on", nullable = false, updatable = false)
+    private Date occurredOn;
 
+    @Column(name = "error", nullable = false, updatable = false)
     private String error;
 
+    @Column(name = "errorCode", nullable = false, updatable = false)
     private int errorCode;
 
-    private ArrayList<String> trace;
+    @OneToMany(targetEntity=Trace.class, mappedBy="log", fetch=FetchType.EAGER)
+    private List<Trace> trace;
+
+    public Log(){}
 
     public Log(
-            String id,
+            UUID id,
             String service,
-            String serviceId,
-            String ocurredOn,
+            UUID serviceId,
+            Date occurredOn,
             String error,
             int errorCode,
-            ArrayList<String> trace
+            List<Trace> trace
     ) {
         this.id = id;
         this.service = service;
         this.serviceId = serviceId;
-        this.ocurredOn = ocurredOn;
+        this.occurredOn = occurredOn;
         this.error = error;
         this.errorCode = errorCode;
         this.trace = trace;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -49,12 +63,12 @@ public class Log {
         return service;
     }
 
-    public String getServiceId() {
+    public UUID getServiceId() {
         return serviceId;
     }
 
-    public String getOcurredOn() {
-        return ocurredOn;
+    public Date getOccurredOn() {
+        return occurredOn;
     }
 
     public String getError() {
@@ -65,7 +79,7 @@ public class Log {
         return errorCode;
     }
 
-    public ArrayList<String> getTrace() {
+    public List<Trace> getTrace() {
         return trace;
     }
 }

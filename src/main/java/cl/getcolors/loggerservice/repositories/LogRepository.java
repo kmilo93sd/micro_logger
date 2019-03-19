@@ -1,9 +1,13 @@
 package cl.getcolors.loggerservice.repositories;
 
 import cl.getcolors.loggerservice.entities.Log;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LogRepository extends MongoRepository<Log, String> {
+import java.util.List;
 
-    Log findByServiceId(String serviceId);
+@Repository
+public interface LogRepository extends JpaRepository<Log, String> {
+
+    List<Log> findAllByServiceId(String serviceId);
 }

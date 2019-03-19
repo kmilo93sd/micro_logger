@@ -1,7 +1,7 @@
 ### PROJECT ###
 .env
 .mvn/
-data/
+pgdata/
 
 HELP.md
 /target/

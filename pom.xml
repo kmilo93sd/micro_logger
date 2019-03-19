@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cl.getcolors</groupId>
-	<artifactId>logger-service</artifactId>
+	<artifactId>logger_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>logger-service</name>
-	<description>Micro servicio de registro de logs.</description>
+	<name>logger_service</name>
+	<description>Microservicio para registro de logs en sistemas distribuidos.</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -25,9 +25,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
